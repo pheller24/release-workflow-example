@@ -1,0 +1,30 @@
+---
+# The actual deployment.
+#  I made a dummy deploy step to abstract away complexity that
+#  we don't need for an example workflow.
+name: Dummy Prod-Deploy
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Deploying #${{ inputs.container_suffix }}"
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      # The environment we specified in GitHub
+      # This is were we can add secrets to.
+      name: Production
+    steps:
+      - run: |
+          echo "Deploying #${{ inputs.container_suffix }}"
+      - run: exit 0 # everything went well
