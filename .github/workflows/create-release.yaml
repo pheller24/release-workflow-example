@@ -18,3 +18,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "notes" > gh release create ${{ inputs.number }} -F -
+  changelog-update:
+    runs-on: ubuntu-latest
+    env:
+      BASE_BRANCH_NAME: develop
+      BRANCH_NAME: main
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update repo
+        run: |
+          git config --global user.email "changelog-fixx0r@digistore24.com"
+          git config --global user.name "Ch4ngel0g fixx0r"
+          git fetch && git pull origin $BRANCH_NAME
+          git checkout $BRANCH_NAME
+      - name: Keep A Changelog - New Release
+        uses: thomaseizinger/keep-a-changelog-new-release@v1
+        with:
+          version: ${{ github.event.release.tag_name }}
+          date: ${{ github.event.repository.updated_at}}
+      - name: add changes
+        run: |
+          git add .
+          git commit -m "Update changelog to ${{ github.event.release.tag_name }}"
+          git push origin $BRANCH_NAME
