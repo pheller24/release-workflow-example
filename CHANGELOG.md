@@ -10,14 +10,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [23.0.22] - 2020-02-02
+
 ### Added
 
-- Deprecated methods now triggers deprecations (via symfony/deprecation-contracts) with #48
-- RenderResponse allows to get Response HTTP Status Code with #47
+-   Deprecated methods now triggers deprecations (via symfony/deprecation-contracts) with #48
+-   RenderResponse allows to get Response HTTP Status Code with #47
 
 ### Changed
 
-- MagicClassWidgetDataProvider is deprecated and will be removed with v25.x
+-   MagicClassWidgetDataProvider is deprecated and will be removed with v25.x
 
 ### Fixed
 
@@ -27,25 +29,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 
-- https://digistore.atlassian.net/browse/PGB-2991
+-   <https://digistore.atlassian.net/browse/PGB-2991>
 
 ## [23.0.0] - 2022-07-26
 
 ### Added
 
-- OCB-7125: provide version hash to parent application by @pheller24 in #36
-- Allow to pass any context to render* methods that can be used in *DataProviders
+-   OCB-7125: provide version hash to parent application by @pheller24 in #36
+-   Allow to pass any context to render_ methods that can be used in _DataProviders
 
 ### Changed
 
-- PGB-2976: improve sdk rendering by @pheller24 in #35
-- render method is split to different methods
-- Mode-Configuration has moved to seperate *Config classes
-- The interface Locale was changed to be usable with PHP8 enums
-
+-   PGB-2976: improve sdk rendering by @pheller24 in #35
+-   render method is split to different methods
+-   Mode-Configuration has moved to seperate \*Config classes
+-   The interface Locale was changed to be usable with PHP8 enums
 
 ### Removed
 
-- locales was removed from RenderMode
-    - This was used for editor only, and now is part of EditorConfig::__construct(...)
-- Disabled method chaining
+-   locales was removed from RenderMode
+    -   This was used for editor only, and now is part of EditorConfig::\_\_construct(...)
+-   Disabled method chaining
+
+[Unreleased]: https://github.com/workflow-playground/release-workflow-example/compare/23.0.22...HEAD
+
+[23.0.22]: https://github.com/workflow-playground/release-workflow-example/compare/23.0.1...23.0.22

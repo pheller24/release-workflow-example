@@ -14,10 +14,6 @@ on:
 
 jobs:
   geilerjob:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - run: ls -lah .github/workflows
-    - uses: .github/workflows/deploy-production.yaml
-      with:
-        container_suffix: foobar
+    uses: ./.github/workflows/deploy-production.yaml
+    with:
+      container_suffix: foobar
