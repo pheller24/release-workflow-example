@@ -15,6 +15,7 @@ on:
           The suffix that we expect to be present for the containers.
         type: string
         required: true
+  workflow_call:
 
 jobs:
   debug:
