@@ -16,7 +16,11 @@ on:
         type: string
         required: true
   workflow_call:
-
+    inputs:
+      container_suffix:
+        type: string
+        required: true
+        default: staging
 jobs:
   debug:
     runs-on: ubuntu-latest
