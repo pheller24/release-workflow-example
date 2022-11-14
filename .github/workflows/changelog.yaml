@@ -23,6 +23,7 @@ jobs:
         run: |
           git config --global user.email "changelog-fixx0r@digistore24.com"
           git config --global user.name "Ch4ngel0g fixx0r"
+          git fetch && git pull
           git branch $BRANCH_NAME
           git checkout $BRANCH_NAME
           git add .
