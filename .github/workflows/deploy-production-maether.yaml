@@ -18,6 +18,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: ls -lah .github/workflows
-    - uses: ./.github/workflows/deploy-production.yaml
+    - uses: .github/workflows/deploy-production.yaml
       with:
         container_suffix: foobar
