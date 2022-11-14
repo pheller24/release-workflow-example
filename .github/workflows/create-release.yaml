@@ -1,0 +1,19 @@
+---
+name: Create Release
+concurrency:
+  group: create-release
+  cancel-in-progress: false
+
+on:
+  workflow_dispatch:
+    inputs:
+      number:
+        description: |
+          The suffix that we expect to be present for the containers.
+        type: string
+        required: true
+jobs:
+  create_release:
+    runs-on:
+    steps:
+      - run: echo "notes" > gh release create ${{ inputs.number }} -F -
