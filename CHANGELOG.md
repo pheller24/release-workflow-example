@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [43.0.0] - 2022-11-14
+
 ## [23.0.22] - 2020-02-02
 
 ### Added
@@ -36,7 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 -   OCB-7125: provide version hash to parent application by @pheller24 in #36
--   Allow to pass any context to render_ methods that can be used in _DataProviders
+-   Allow to pass any context to render\_ methods that can be used in \_DataProviders
 
 ### Changed
 
@@ -51,6 +53,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
     -   This was used for editor only, and now is part of EditorConfig::\_\_construct(...)
 -   Disabled method chaining
 
-[Unreleased]: https://github.com/workflow-playground/release-workflow-example/compare/23.0.22...HEAD
+[Unreleased]: https://github.com/workflow-playground/release-workflow-example/compare/43.0.0...HEAD
+
+[43.0.0]: https://github.com/workflow-playground/release-workflow-example/compare/23.0.22...43.0.0
 
 [23.0.22]: https://github.com/workflow-playground/release-workflow-example/compare/23.0.1...23.0.22
