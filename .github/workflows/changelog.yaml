@@ -12,16 +12,12 @@ jobs:
       BASE_BRANCH_NAME: develop
       BRANCH_NAME: main
     steps:
-      - name: Set current date as env variable
-        run: echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
-      - name: Echo current date
-        run: echo $NOW
       - uses: actions/checkout@v2
       - name: Keep A Changelog - New Release
         uses: thomaseizinger/keep-a-changelog-new-release@v1
         with:
           version: ${{ github.event.release.tag_name }}
-          date: $NOW
+          date: ${{ github.event.repository.updated_at}}
       - name: add changes
         run: |
           git config --global user.email "changelog-fixx0r@digistore24.com"
