@@ -15,8 +15,11 @@ jobs:
         with:
           version: ${{ github.event.release.tag_name }}
           date: 2020-02-02
-      - name: bla
-        run: git status
+      - name: add changes
+        run: |
+          git add .
+          git commit -m "Update changelog"
+          git push
 #  changelog:
 #    runs-on: ubuntu-latest
 #    steps:
