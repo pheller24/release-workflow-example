@@ -13,7 +13,8 @@ jobs:
       - name: Keep A Changelog - New Release
         uses: thomaseizinger/keep-a-changelog-new-release@v1
         with:
-          tag: ${{ github.event.release.tag_name }}
+          version: ${{ github.event.release.tag_name }}
+          date: 2020-02-02
 #  changelog:
 #    runs-on: ubuntu-latest
 #    steps:
