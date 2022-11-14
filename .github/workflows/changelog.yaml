@@ -8,6 +8,10 @@ on:
 jobs:
   changelog-prepare:
     runs-on: ubuntu-latest
+    env:
+      BASE_BRANCH_NAME: develop
+      BRANCH_NAME: main
+      # GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     steps:
       - uses: actions/checkout@v2
       - name: Keep A Changelog - New Release
@@ -19,9 +23,11 @@ jobs:
         run: |
           git config --global user.email "changelog-fixx0r@digistore24.com"
           git config --global user.name "Ch4ngel0g fixx0r"
+          git branch $BRANCH_NAME
+          git checkout $BRANCH_NAME
           git add .
           git commit -m "Update changelog"
-          git push origin main
+          git push origin $BRANCH_NAME
 #  changelog:
 #    runs-on: ubuntu-latest
 #    steps:
