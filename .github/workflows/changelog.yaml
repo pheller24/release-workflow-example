@@ -19,12 +19,9 @@ jobs:
         run: |
           git config --global user.email "changelog-fixx0r@digistore24.com"
           git config --global user.name "Ch4ngel0g fixx0r"
-          git remote update
-          git fetch
-          git checkout origin/main
           git add .
           git commit -m "Update changelog"
-          git push
+          git push origin main
 #  changelog:
 #    runs-on: ubuntu-latest
 #    steps:
