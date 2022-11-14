@@ -17,6 +17,8 @@ jobs:
           date: 2020-02-02
       - name: add changes
         run: |
+          git config --global user.email "changelog-fixx0r@digistore24.com"
+          git config --global user.name "Ch4ngel0g fixx0r"
           git add .
           git commit -m "Update changelog"
           git push
