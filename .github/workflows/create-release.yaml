@@ -16,7 +16,6 @@ jobs:
   create_release:
     runs-on: ubuntu-latest
     steps:
-      -
       - run: echo "notes" > gh release create ${{ inputs.number }} -F -
   changelog-update:
     runs-on: ubuntu-latest
