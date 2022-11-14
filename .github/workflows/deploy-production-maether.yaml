@@ -17,5 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - run: ls -lah
+    - run: ls -lah .github/workflows
     - uses: ./.github/workflows/deploy-production.yaml
+      with:
+        container_suffix: foobar
