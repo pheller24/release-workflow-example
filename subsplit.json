@@ -1,7 +1,7 @@
 {
   "sub-splits": [
     {
-      "name": "sdk",
+      "name": "origin",
       "directory": "package",
       "target": "git@github.com:dsentker24/sdk-target.git"
     }
