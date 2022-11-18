@@ -1,29 +1,28 @@
 name: Split SDK
 on: [push]
 jobs:
-  SplitSDK:
+  split_sdk:
     runs-on: ubuntu-latest
+    name: Split SDK
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
-          # Checkout pull request HEAD commit instead of merge commit
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
-      - name: Get Token
-        id: token
-        uses: getsentry/action-github-app-token@v1
+          fetch-depth: '0'
+          persist-credentials: 'false'
+      - uses: frankdejonge/use-github-token@1.0.1
         with:
-          app_id: ${{ secrets.CCH_GH_APP_ID }}
-          private_key: ${{ secrets.CCH_GH_APP_KEY }}
-      - name: Split Branch for Tools
-        # see https://github.com/splitsh/lite
-        run: |
-          echo "🤘 Starting to split"
-          ./bin/splitsh-lite --prefix=package/:p/ --target=refs/heads/split/tmp
-      - name: Push to Remote
-        run: |
-          git config --global user.name 'pb-splitter-bot'
-          git config --global user.email 'pb-splitter-bot@users.noreply.github.com'
-          git config --unset-all http.https://github.com/.extraheader
-          git push --atomic --force https://x-access-token:${{ steps.token.outputs.token }}@github.com/hulkag/cch-repo-sandbox.git split/tmp:${{ github.ref }}
+          authentication: 'dsentker24:${{ secrets.DSENTKER_GH_TOKEN }}'
+          user_name: 'Some Name'
+          user_email: 'some.name@example.com'
+      - name: Cache splitsh-lite
+        id: splitsh-cache
+        uses: actions/cache@v2
+        with:
+          path: './.splitsh'
+          key: '${{ runner.os }}-splitsh-d-101'
+      - uses: ./
+        with:
+          source-branch: 'main'
+          config-path: './subsplit.json'
+          splitsh-path: './bin/splitsh-lite'
+          splitsh-version: 'v1.0.1'
