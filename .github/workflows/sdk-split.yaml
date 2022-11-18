@@ -1,6 +1,24 @@
 name: Split SDK
-on: [push]
+
+on:
+  release:
+    types: [published]
+
 jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Synchronize sub-repo
+        uses: fundamend/action-splitsh-lite@main
+        with:
+          source-directory: 'package/'
+          target-repository: 'dsentker24/sdk-target'
+          target-deploy-key: ${{ secrets.DSENTKER_GH_TOKEN }}
+          target-branch: 'dummy'
   split_sdk:
     runs-on: ubuntu-latest
     name: Split SDK
