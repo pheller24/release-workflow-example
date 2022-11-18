@@ -1,9 +1,9 @@
 {
   "sub-splits": [
     {
-      "name": "workflows",
+      "name": "sdk",
       "directory": "package",
-      "target": "git@github.com:dsentker24/sdk-target.git"
+      "target": "git@github.com:xxdsentker24/sdk-target.git"
     }
   ]
 }

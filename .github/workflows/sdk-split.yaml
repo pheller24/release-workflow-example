@@ -9,14 +9,14 @@ jobs:
         with:
           fetch-depth: '0'
           persist-credentials: 'false'
-      - uses: frankdejonge/use-github-token@1.0.1
+      - uses: frankdejonge/use-github-token@1.0.2
         with:
           authentication: 'dsentker24:${{ secrets.DSENTKER_GH_TOKEN }}'
           user_name: 'Some Name'
           user_email: 'some.name@example.com'
       - name: Cache splitsh-lite
         id: splitsh-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: './bin/splitsh'
           key: '${{ runner.os }}-splitsh-d-101'
