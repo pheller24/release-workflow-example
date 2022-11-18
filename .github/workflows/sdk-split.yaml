@@ -15,10 +15,10 @@ jobs:
       - name: Synchronize sub-repo
         uses: fundamend/action-splitsh-lite@main
         with:
-          source-directory: 'package/'
-          target-repository: 'dsentker24/sdk-target'
-          target-deploy-key: ${{ secrets.DSENTKER_GH_TOKEN }}
-          target-branch: 'dummy'
+          source_directory: 'package/'
+          target_repository: 'dsentker24/sdk-target'
+          target_deploy_key: ${{ secrets.DSENTKER_GH_TOKEN }}
+          target_branch: 'dummy'
   split_sdk:
     runs-on: ubuntu-latest
     name: Split SDK
