@@ -21,7 +21,7 @@ jobs:
           path: './bin/splitsh'
           key: '${{ runner.os }}-splitsh-d-101'
       - name: use-subsplit-publish
-        uses: frankdejonge/use-subsplit-publish
+        uses: frankdejonge/use-subsplit-publish@1.0.0-beta.6
         with:
           source-branch: 'main'
           config-path: './subsplit.json'
