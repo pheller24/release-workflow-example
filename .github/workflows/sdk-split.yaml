@@ -1,8 +1,8 @@
 name: Split SDK
 
-on:
-  release:
-    types: [published]
+on: [push]
+  # release:
+  #   types: [published]
 
 jobs:
   release:
