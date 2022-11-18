@@ -18,9 +18,10 @@ jobs:
         id: splitsh-cache
         uses: actions/cache@v2
         with:
-          path: './.splitsh'
+          path: './bin/splitsh'
           key: '${{ runner.os }}-splitsh-d-101'
-      - uses: ./
+      - name: use-subsplit-publish
+        uses: frankdejonge/use-subsplit-publish
         with:
           source-branch: 'main'
           config-path: './subsplit.json'
