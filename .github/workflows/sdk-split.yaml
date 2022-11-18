@@ -1,0 +1,29 @@
+name: Split SDK
+on: [push]
+jobs:
+  SplitSDK:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        with:
+          # Checkout pull request HEAD commit instead of merge commit
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Get Token
+        id: token
+        uses: getsentry/action-github-app-token@v1
+        with:
+          app_id: ${{ secrets.CCH_GH_APP_ID }}
+          private_key: ${{ secrets.CCH_GH_APP_KEY }}
+      - name: Split Branch for Tools
+        # see https://github.com/splitsh/lite
+        run: |
+          echo "🤘 Starting to split"
+          ./bin/splitsh-lite --prefix=package/:p/ --target=refs/heads/split/tmp
+      - name: Push to Remote
+        run: |
+          git config --global user.name 'pb-splitter-bot'
+          git config --global user.email 'pb-splitter-bot@users.noreply.github.com'
+          git config --unset-all http.https://github.com/.extraheader
+          git push --atomic --force https://x-access-token:${{ steps.token.outputs.token }}@github.com/hulkag/cch-repo-sandbox.git split/tmp:${{ github.ref }}

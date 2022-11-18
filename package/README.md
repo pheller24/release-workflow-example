@@ -1,0 +1,1 @@
+It is expected that this directory is mirrored to another repository.
