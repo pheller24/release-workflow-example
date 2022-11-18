@@ -3,7 +3,7 @@
     {
       "name": "sdk",
       "directory": "package",
-      "target": "git@github.com:frankdejonge/example-subsplit-publish.git"
+      "target": "git@github.com:dsentker24/sdk-target.git"
     }
   ]
 }
