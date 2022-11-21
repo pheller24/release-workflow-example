@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: '0'
           persist-credentials: 'false'
-          ref: foobar
+          ref: main
       - uses: frankdejonge/use-github-token@1.0.2
         with:
           authentication: 'dsentker24:${{ secrets.DSENTKER_GH_TOKEN }}'
