@@ -12,12 +12,14 @@ on:
 jobs:
   split_sdk:
     runs-on: ubuntu-latest
+    # if: github.ref == 'refs/heads/main'
     name: Split SDK
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: '0'
           persist-credentials: 'false'
+          ref: foobar
       - uses: frankdejonge/use-github-token@1.0.2
         with:
           authentication: 'dsentker24:${{ secrets.DSENTKER_GH_TOKEN }}'
