@@ -20,7 +20,7 @@ jobs:
     # if: github.ref == 'refs/heads/main'
     name: Split SDK
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: '0'
           ref: main
@@ -29,15 +29,9 @@ jobs:
           touch .version
           echo $VERSION >> .version
       - name: Update Version file
-        run: |
-          git config --global user.email "version-bot@users.noreply.github.com"
-          git config --global user.name "Version Bot"
-          git config pull.rebase false
-          git fetch && git pull origin $SOURCE_BRANCH
-          git checkout $SOURCE_BRANCH
-          git add .version
-          git commit -m "Update version to $VERSION"
-          git push
+        uses: maxgfr/github-commit-push-file@main
+        with:
+            commit_name: 'fix: add new line to sha.txt'
       - uses: frankdejonge/use-github-token@1.0.2
         with:
           authentication: 'dsentker24:${{ secrets.DSENTKER_GH_TOKEN }}'
