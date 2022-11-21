@@ -20,6 +20,11 @@ jobs:
     # if: github.ref == 'refs/heads/main'
     name: Split SDK
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+          persist-credentials: 'false'
+          ref: main
       - name: Update Version file
         run: |
           git config --global user.email "version-bot@digistore24.com"
@@ -32,11 +37,6 @@ jobs:
           git add .version
           git commit -m "Update version to $VERSION"
           git push origin $SOURCE_BRANCH
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: '0'
-          persist-credentials: 'false'
-          ref: main
       - uses: frankdejonge/use-github-token@1.0.2
         with:
           authentication: 'dsentker24:${{ secrets.DSENTKER_GH_TOKEN }}'
