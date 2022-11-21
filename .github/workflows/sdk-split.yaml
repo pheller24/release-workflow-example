@@ -1,13 +1,13 @@
 name: Split SDK
 
-on:
-  create:
-    tags:
-      - '*'
+#on:
+#  create:
+#    tags:
+#      - '*'
 
-#on: [push]
-  # release:
-  #   types: [published]
+on:
+   release:
+     types: [published]
 
 jobs:
   split_sdk:
