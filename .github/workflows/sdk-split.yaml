@@ -12,9 +12,24 @@ on:
 jobs:
   split_sdk:
     runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ github.event.release.tag_name }}
+      SOURCE_BRANCH: main
     # if: github.ref == 'refs/heads/main'
     name: Split SDK
     steps:
+      - name: Update Version file
+        run: |
+          touch .version
+          echo $VERSION >> .version
+          git config --global user.email "version-bot@digistore24.com"
+          git config --global user.name "Version Bot"
+          git config pull.rebase false
+          git fetch && git pull origin $SOURCE_BRANCH
+          git checkout $SOURCE_BRANCH
+          git add .version
+          git commit -m "Update version to $VERSION"
+          git push origin $SOURCE_BRANCH
       - uses: actions/checkout@v2
         with:
           fetch-depth: '0'
