@@ -27,8 +27,6 @@ jobs:
           ref: main
       - name: Update Version file
         run: |
-          git config --global user.email "version-bot@digistore24.com"
-          git config --global user.name "Version Bot"
           git config pull.rebase false
           git fetch && git pull origin $SOURCE_BRANCH
           git checkout $SOURCE_BRANCH
